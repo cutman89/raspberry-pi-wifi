@@ -152,7 +152,7 @@ def signin():
 
     print(email, ssid, password)
     valid_psk = check_cred(ssid, password)
-    if  valid_psk:
+    if  valid_psk==True:
          with open('wpa.conf', 'w') as f:
               f.write(wpa_conf % (ssid, pwd))
     with open('status.json', 'w') as f:
