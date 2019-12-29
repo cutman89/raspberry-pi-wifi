@@ -152,11 +152,8 @@ def signin():
 
     print(email, ssid, password)
     valid_psk = check_cred(ssid, password)
-    if not valid_psk:
-        # User will not see this because they will be disconnected but we need to break here anyway
-        return render_template('index.html', message="Wrong password!")
-    else:
-        with open('wpa.conf', 'w') as f:
+    if  valid_psk:
+         with open('wpa.conf', 'w') as f:
               f.write(wpa_conf % (ssid, pwd))
     with open('status.json', 'w') as f:
         f.write(json.dumps({'status':'disconnected'}))
