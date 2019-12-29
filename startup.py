@@ -156,7 +156,7 @@ def signin():
         # User will not see this because they will be disconnected but we need to break here anyway
         return render_template('ap.html', message="Wrong password!")
     if valid_psk:
-    with open('wpa.conf', 'w') as f:
+        with open('wpa.conf', 'w') as f:
         f.write(wpa_conf % (ssid, pwd))
     with open('status.json', 'w') as f:
         f.write(json.dumps({'status':'disconnected'}))
